@@ -1,5 +1,5 @@
 import { ScrollView, StyleSheet, View } from 'react-native';
-import Header from '../components/Header';
+import Header from '../components/header';
 import AccountSection from '../components/account-section';
 import ActionMenu from '../components/action-menu';
 import CardsButton from '../components/cards-button';

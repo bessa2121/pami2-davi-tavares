@@ -1,15 +1,10 @@
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import PixHeader from '../components/pix-header';
 
 export default function PixScreen() {
   return (
     <ScrollView style={styles.container}>
-      
-      <Text style={styles.title}>Área Pix</Text>
-
-      <Text style={styles.subtitle}>
-        Envie e receba pagamentos a qualquer hora do dia, sem pagar nada.
-      </Text>
-
+      <PixHeader />
       <View style={styles.grid}>
         {['Transferir', 'Programar', 'Ler QR code',
           'Pix Copia e Cola', 'Cobrar', 'Depositar']

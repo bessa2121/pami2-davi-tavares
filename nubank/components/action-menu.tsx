@@ -1,9 +1,11 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-function ActionItem({ icon, label }: any) {
+
+function ActionItem({ icon, label, onPress }: any) {
   return (
-    <TouchableOpacity style={styles.item}>
+    <TouchableOpacity style={styles.item} onPress={onPress}>
       <View style={styles.circle}>
         <Feather name={icon} size={22} color="white" />
       </View>
@@ -13,15 +15,22 @@ function ActionItem({ icon, label }: any) {
 }
 
 export default function ActionMenu() {
+  const router = useRouter();
+
   return (
     <View style={styles.container}>
-      <ActionItem icon="repeat" label="Área Pix e Transferir" />
+      <ActionItem 
+        onPress={() => router.push('/pix')} 
+        icon="repeat" 
+        label="Área Pix" 
+      />
       <ActionItem icon="barcode" label="Pagar" />
-      <ActionItem icon="grid" label="Pix QR code" />
+      <ActionItem icon="grid" label="Pix QR" />
       <ActionItem icon="smartphone" label="Recarga" />
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -48,4 +57,4 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 12,
   },
-});
+}); 

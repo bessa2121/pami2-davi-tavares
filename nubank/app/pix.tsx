@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {
   AntDesign,
   Feather,
@@ -7,6 +8,8 @@ import {
 } from '@expo/vector-icons';
 
 import { useRouter } from 'expo-router';
+=======
+>>>>>>> 7b4caf0cb4dc971ca6cf54f27caded968303b6e7
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import PixHeader from '../components/pix-header';
 

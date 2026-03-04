@@ -1,5 +1,6 @@
 import { Feather } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
+<<<<<<< HEAD
 import { Barcode } from 'lucide-react-native';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
@@ -13,6 +14,20 @@ function ActionItem({ IconComponent, iconName, label, onPress }: any) {
         <Text style={styles.label}>{label}</Text>
       </TouchableOpacity>
     );
+=======
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
+
+function ActionItem({ icon, label, onPress }: any) {
+  return (
+    <TouchableOpacity style={styles.item} onPress={onPress}>
+      <View style={styles.circle}>
+        <Feather name={icon} size={22} color="white" />
+      </View>
+      <Text style={styles.label}>{label}</Text>
+    </TouchableOpacity>
+  );
+>>>>>>> 7b4caf0cb4dc971ca6cf54f27caded968303b6e7
 }
 
 export default function ActionMenu() {
@@ -21,6 +36,7 @@ export default function ActionMenu() {
   return (
     <View style={styles.container}>
       <ActionItem 
+<<<<<<< HEAD
       IconComponent={Feather}
       iconName="command"
       label="Área Pix"
@@ -39,6 +55,15 @@ export default function ActionMenu() {
         IconComponent={Feather}
         iconName="smartphone"
         label="Recarga" />
+=======
+        onPress={() => router.push('/pix')} 
+        icon="repeat" 
+        label="Área Pix" 
+      />
+      <ActionItem icon="barcode" label="Pagar" />
+      <ActionItem icon="grid" label="Pix QR" />
+      <ActionItem icon="smartphone" label="Recarga" />
+>>>>>>> 7b4caf0cb4dc971ca6cf54f27caded968303b6e7
     </View>
   );
 }

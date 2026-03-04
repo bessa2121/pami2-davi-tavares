@@ -1,10 +1,10 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 export default function SavingsSection() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Total em Caixinhas</Text>
-
+      <Text style={styles.value}>••••</Text>
       <View style={styles.box}>
         <Text style={styles.plus}>+</Text>
       </View>
@@ -32,5 +32,11 @@ const styles = StyleSheet.create({
   plus: {
     color: '#00D4FF',
     fontSize: 40,
+  },
+    value: {
+    marginTop: 8,
+    color: 'white',
+    fontSize: 24,
+    fontWeight: 'bold',
   },
 });

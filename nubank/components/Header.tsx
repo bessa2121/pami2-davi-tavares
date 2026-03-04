@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
 export default function Header() {
+  
   return (
     <View style={styles.container}>
       <View style={styles.topRow}>

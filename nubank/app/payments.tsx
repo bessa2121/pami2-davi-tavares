@@ -1,35 +1,42 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import PayButtons from '../components/pay-buttons';
+import PayHeader from '../components/pay-header';
 
 export default function PaymentsScreen() {
   const router = useRouter();
 
+  const options = [
+    { label: 'Assistente de Pagamentos', icon: 'cash-sync' },
+    { label: 'Débito Automático', icon: 'autorenew' },
+    { label: 'Contas do Detran', icon: 'car' },
+    { label: 'Pix por aproximação', icon: 'wifi' },
+  ];
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Opções de pagamento</Text>
-
-      <View style={styles.topButtons}>
-        <TouchableOpacity style={styles.circleButton}>
-          <Text style={styles.circleText}>Boleto</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity 
-          style={styles.circleButton}
-          onPress={() => router.push('/pix')}
-        >
-          <Text style={styles.circleText}>Pix</Text>
-        </TouchableOpacity>
-      </View>
+      <PayHeader />
+      <PayButtons />
 
       <Text style={styles.section}>Mais opções</Text>
 
-      {['Assistente de Pagamentos', 'Débito Automático', 'Contas do Detran', 'Pix por aproximação']
-        .map((item, index) => (
-          <TouchableOpacity key={index} style={styles.listItem}>
-            <Text style={styles.listText}>{item}</Text>
-          </TouchableOpacity>
-      ))}
+      {options.map((item, index) => (
+        <TouchableOpacity key={index} style={styles.listItem}>
+          
+          <View style={styles.leftContent}>
+            <MaterialCommunityIcons 
+              name={item.icon} 
+              size={22} 
+              color="white" 
+              style={styles.icon}
+            />
+            <Text style={styles.listText}>{item.label}</Text>
+          </View>
 
+          <Feather name="chevron-right" size={22} color="#777" />
+        </TouchableOpacity>
+      ))}
     </View>
   );
 }
@@ -38,42 +45,37 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#121212',
-    paddingTop: 60,
+    paddingTop: 50,
     paddingHorizontal: 20,
   },
-  title: {
-    color: 'white',
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 30,
+
+  section: {
+    color: '#8E8E93',
+    fontSize: 14,
+    marginTop: 25,
+    marginBottom: 10,
   },
-  topButtons: {
+
+  listItem: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginBottom: 30,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 18,
+    borderBottomWidth: 0.5,
+    borderBottomColor: '#2C2C2E',
   },
-  circleButton: {
-    backgroundColor: '#1E1E1E',
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    justifyContent: 'center',
+
+  leftContent: {
+    flexDirection: 'row',
     alignItems: 'center',
   },
-  circleText: {
-    color: 'white',
-    fontWeight: 'bold',
+
+  icon: {
+    marginRight: 15,
   },
-  section: {
-    color: '#aaa',
-    marginBottom: 15,
-  },
-  listItem: {
-    paddingVertical: 20,
-    borderBottomWidth: 0.5,
-    borderBottomColor: '#333',
-  },
+
   listText: {
     color: 'white',
+    fontSize: 16,
   },
 });
